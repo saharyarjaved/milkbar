@@ -1,9 +1,14 @@
 [build]
-command = "bun install --no-cache && bun run build"
-publish = ".next"
-environment = { NEXT_PRIVATE_UNSTABLE_NO_EDGE = "1" }
+  # Install deps with bun and build with next
+  command = "bun install --no-cache && bun run build"
+  publish = ".next"
 
+# Environment variables
+[build.environment]
+  NODE_ENV = "production"
+  NEXT_PRIVATE_UNSTABLE_NO_EDGE = "true"
+  NEXT_FORCE_EDGE_IMAGES = "true"
+
+# Next.js plugin
 [[plugins]]
-package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-  disableEdge = true
+  package = "@netlify/plugin-nextjs"
