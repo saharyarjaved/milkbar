@@ -1,6 +1,9 @@
 [build]
 command = "bun install --no-cache && bun run build"
 publish = ".next"
+environment = { NEXT_PRIVATE_UNSTABLE_NO_EDGE = "1" }
 
-[build.environment]
-NPM_FLAGS = "--legacy-peer-deps"
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+  disableEdge = true
